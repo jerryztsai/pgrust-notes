@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="intro">{{ section.content | safe }}</section>
+{% set posts = get_section(path="posts/_index.md") %}
+<h2>Latest</h2>
+{% set pages = posts.pages[:10] %}
+{% include "post_list.html" %}
+{% endblock %}

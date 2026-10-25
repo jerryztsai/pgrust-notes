@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}{{ term.name }} · {{ config.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ taxonomy.name | capitalize }}: {{ term.name }}</h1>
+<p><a href="{{ term.permalink | safe }}atom.xml">Feed for this {{ taxonomy.name | trim_end(pat="s") }}</a></p>
+{% set pages = term.pages %}
+{% include "post_list.html" %}
+{% endblock %}

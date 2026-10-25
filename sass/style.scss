@@ -1,0 +1,105 @@
+:root {
+  --bg: #fdfdfc;
+  --fg: #1f2328;
+  --muted: #656d76;
+  --accent: #336791; // Postgres blue
+  --rule: #e4e4e0;
+  --aside: #f3f4f1;
+  --code-inline: #eef0ec;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181c;
+    --fg: #e6e6e3;
+    --muted: #9aa0a6;
+    --accent: #7fb2e0;
+    --rule: #2c3036;
+    --aside: #1e2126;
+    --code-inline: #262a30;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  max-width: 44rem;
+  padding: 0 1rem;
+  background: var(--bg);
+  color: var(--fg);
+  font: 17px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+a { color: var(--accent); }
+
+header.site {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--rule);
+
+  .brand { font-weight: 700; color: var(--fg); text-decoration: none; }
+  nav a { margin-left: 1rem; }
+}
+
+footer.site {
+  margin: 4rem 0 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+h1 { line-height: 1.25; }
+.meta { color: var(--muted); font-size: .95rem; margin-top: -.5rem; }
+
+code {
+  font: .9em/1.5 ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+}
+:not(pre) > code { background: var(--code-inline); padding: .1em .3em; border-radius: 4px; }
+
+pre {
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: .9rem;
+}
+
+a.src code { background: none; padding: 0; }
+
+aside.series {
+  background: var(--aside);
+  border-left: 3px solid var(--accent);
+  padding: .75rem 1rem;
+  margin: 1.5rem 0;
+  ol { margin: .5rem 0 0; padding-left: 1.5rem; }
+}
+
+ul.posts {
+  list-style: none;
+  padding: 0;
+  li { display: flex; gap: 1rem; padding: .25rem 0; }
+  time { color: var(--muted); font-variant-numeric: tabular-nums; flex-shrink: 0; }
+}
+
+.draft {
+  font-size: .75rem;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0 .3rem;
+}
+
+.tags a { margin-right: .5rem; }
+
+nav.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+}

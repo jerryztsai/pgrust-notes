@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{ config.default_language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ config.title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ config.description }}{% endblock %}">
+  <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path='atom.xml', trailing_slash=false) }}">
+</head>
+<body>
+  <header class="site">
+    <a class="brand" href="{{ get_url(path='') }}">{{ config.title }}</a>
+    <nav>
+      <a href="{{ get_url(path='posts') }}">Posts</a>
+      <a href="{{ get_url(path='tags') }}">Tags</a>
+      <a href="{{ get_url(path='atom.xml', trailing_slash=false) }}">Feed</a>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site">
+    Notes on <a href="{{ config.extra.pgrust_repo }}">pgrust</a> {{ config.extra.pgrust_version }}.
+    Code excerpts © the pgrust authors, AGPL-3.0.
+  </footer>
+</body>
+</html>

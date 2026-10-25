@@ -1,0 +1,36 @@
+# Change this to your real URL before deploying, e.g. "https://<user>.github.io/pgrust-notes"
+base_url = "https://example.com"
+
+title = "Reading pgrust"
+description = "Notes from reading the source code of pgrust, a Rust rewrite of Postgres."
+author = "Jerry Cai"
+default_language = "en"
+
+compile_sass = true
+build_search_index = false
+
+# Site-wide Atom feed at /atom.xml.
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+
+taxonomies = [
+    # Each tag gets its own feed, e.g. /tags/postgresql/atom.xml.
+    # Planet PostgreSQL asks for a feed of only Postgres-related posts: submit that one.
+    { name = "tags", feed = true },
+    { name = "series", feed = true },
+]
+
+[markdown]
+smart_punctuation = true
+
+[markdown.highlighting]
+theme = "catppuccin-mocha"
+
+[extra]
+# Every post's source links point at this commit, so they don't rot as pgrust changes.
+# Bump it (and the version) when you start reading a newer release.
+pgrust_repo = "https://github.com/malisper/pgrust"
+pgrust_commit = "38634b408dea373f3944006dfbf74d19cbfc409f"
+pgrust_version = "v0.4-beta"
+
+github = "https://github.com/<your-username>"

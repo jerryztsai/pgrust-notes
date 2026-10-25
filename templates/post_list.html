@@ -1,0 +1,10 @@
+{#- Expects `pages` to be set by the including template. -#}
+<ul class="posts">
+  {% for page in pages %}
+  <li>
+    <time datetime="{{ page.date }}">{{ page.date | date(format="%Y-%m-%d") }}</time>
+    <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+    {% if page.draft %}<span class="draft">draft</span>{% endif %}
+  </li>
+  {% endfor %}
+</ul>

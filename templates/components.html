@@ -1,0 +1,20 @@
+{#- Link to a pgrust path at the pinned commit. Components only see their own parameters,
+    so `repo` and `commit` default to the values below: bump them together with
+    `extra.pgrust_commit` in zola.toml.
+
+    In markdown:
+      {{<src path="crates/backend/storage/smgr/src/lib.rs" />}}
+      {{<src path="crates/backend/storage/smgr/src/lib.rs" line={42} end={60} text="smgrread" />}}
+-#}
+{% component src(path: string, line: integer = 0, end: integer = 0, text: string = "",
+                 repo: string = "https://github.com/malisper/pgrust",
+                 commit: string = "38634b408dea373f3944006dfbf74d19cbfc409f") %}
+{%- set url = repo ~ "/blob/" ~ commit ~ "/" ~ path -%}
+{%- set label = path -%}
+{%- if line -%}
+  {%- set url = url ~ "#L" ~ line -%}
+  {%- set label = path ~ ":" ~ line -%}
+  {%- if end %}{% set url = url ~ "-L" ~ end %}{% endif -%}
+{%- endif -%}
+<a class="src" href="{{ url }}"><code>{{ text or label }}</code></a>
+{%- endcomponent src %}

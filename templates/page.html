@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} · {{ config.title }}{% endblock %}
+{% block description %}{{ page.description or config.description }}{% endblock %}
+
+{% block content %}
+<article>
+  <header>
+    <h1>{{ page.title }}</h1>
+    <p class="meta">
+      <time datetime="{{ page.date }}">{{ page.date | date(format="%B %-d, %Y") }}</time>
+      · {{ page.reading_time }} min read
+      · pgrust <a href="{{ config.extra.pgrust_repo }}/tree/{{ config.extra.pgrust_commit }}">{{ config.extra.pgrust_version }}</a>
+    </p>
+  </header>
+
+  {% if page.taxonomies.series %}
+  {% set series_name = page.taxonomies.series | first %}
+  {% set series = get_taxonomy_term(kind="series", term=series_name) %}
+  <aside class="series">
+    <strong>Series: <a href="{{ series.permalink | safe }}">{{ series_name }}</a></strong>
+    <ol start="0">
+      {% for p in series.pages | sort(attribute="extra.part") %}
+      <li>{% if p.relative_path == page.relative_path %}<b>{{ p.title }}</b>{% else %}<a href="{{ p.permalink | safe }}">{{ p.title }}</a>{% endif %}</li>
+      {% endfor %}
+    </ol>
+  </aside>
+  {% endif %}
+
+  {{ page.content | safe }}
+
+  {% if page.taxonomies.tags %}
+  <p class="tags">
+    {% for tag in page.taxonomies.tags %}<a href="{{ get_taxonomy_url(kind='tags', term=tag) }}">#{{ tag }}</a> {% endfor %}
+  </p>
+  {% endif %}
+
+  <nav class="pager">
+    {% if page.higher %}<a href="{{ page.higher.permalink | safe }}">← {{ page.higher.title }}</a>{% endif %}
+    {% if page.lower %}<a href="{{ page.lower.permalink | safe }}">{{ page.lower.title }} →</a>{% endif %}
+  </nav>
+</article>
+{% endblock %}
