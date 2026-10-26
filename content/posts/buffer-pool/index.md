@@ -2,8 +2,6 @@
 title = "Reading pgrust, part 1: one i32 and the buffer pool behind it"
 date = 2026-10-25
 description = "What pgrust's Buffer type encodes, how the shared buffer pool finds, pins and evicts pages, and how big it is: 8 KiB pages, 16,384 slots by default, resizable while running."
-# Drafts only show with `zola serve --drafts`. Remove this line to publish.
-draft = true
 
 [taxonomies]
 tags = ["postgresql", "rust", "storage"]

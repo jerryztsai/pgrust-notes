@@ -1,5 +1,5 @@
-# Change this to your real URL before deploying, e.g. "https://<user>.github.io/pgrust-notes"
-base_url = "https://example.com"
+# The deploy workflow overrides this with the Pages URL; it matters for local builds and a custom domain.
+base_url = "https://jerryztsai.github.io/pgrust-notes"
 
 title = "Reading pgrust"
 description = "Notes from reading the source code of pgrust, a Rust rewrite of Postgres."
@@ -33,4 +33,4 @@ pgrust_repo = "https://github.com/malisper/pgrust"
 pgrust_commit = "38634b408dea373f3944006dfbf74d19cbfc409f"
 pgrust_version = "v0.4-beta"
 
-github = "https://github.com/<your-username>"
+github = "https://github.com/jerryztsai"

@@ -19,9 +19,9 @@
   {% set series = get_taxonomy_term(kind="series", term=series_name) %}
   <aside class="series">
     <strong>Series: <a href="{{ series.permalink | safe }}">{{ series_name }}</a></strong>
-    <ol start="0">
+    <ol>
       {% for p in series.pages | sort(attribute="extra.part") %}
-      <li>{% if p.relative_path == page.relative_path %}<b>{{ p.title }}</b>{% else %}<a href="{{ p.permalink | safe }}">{{ p.title }}</a>{% endif %}</li>
+      <li value="{{ p.extra.part }}">{% if p.relative_path == page.relative_path %}<b>{{ p.title }}</b>{% else %}<a href="{{ p.permalink | safe }}">{{ p.title }}</a>{% endif %}</li>
       {% endfor %}
     </ol>
   </aside>
